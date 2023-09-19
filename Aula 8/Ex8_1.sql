@@ -1,0 +1,69 @@
+-- 1.
+DBCC FREEPROCCACHE;
+DBCC DROPCLEANBUFFERS;
+SELECT * FROM PRODUCTION.WorkOrder
+
+-- 2.
+DBCC FREEPROCCACHE;
+DBCC DROPCLEANBUFFERS;
+select * from Production.WorkOrder where WorkOrderID=1234
+
+-- 3.1
+DBCC FREEPROCCACHE;
+DBCC DROPCLEANBUFFERS;
+SELECT * FROM Production.WorkOrder
+WHERE WorkOrderID between 10000 and 10010
+
+-- 3.2
+DBCC FREEPROCCACHE;
+DBCC DROPCLEANBUFFERS;
+SELECT * FROM Production.WorkOrder
+WHERE WorkOrderID between 1 and 72591
+
+-- 4.
+DBCC FREEPROCCACHE;
+DBCC DROPCLEANBUFFERS;
+SELECT * FROM Production.WorkOrder
+WHERE StartDate = '2007-06-25'
+
+-- 5.
+DBCC FREEPROCCACHE;
+DBCC DROPCLEANBUFFERS;
+CREATE INDEX idxProductID ON Production.WorkOrder(ProductID)
+SELECT * FROM Production.WorkOrder WHERE ProductID = 757
+
+-- 6
+DBCC FREEPROCCACHE;
+DBCC DROPCLEANBUFFERS;
+CREATE INDEX IxProductID ON Production.WorkOrder (ProductID) INCLUDE (StartDate)
+-- 6.1
+DBCC FREEPROCCACHE;
+DBCC DROPCLEANBUFFERS;
+SELECT WorkOrderID, StartDate FROM Production.WorkOrder
+WHERE ProductID = 757
+
+-- 6.2
+DBCC FREEPROCCACHE;
+DBCC DROPCLEANBUFFERS;
+SELECT WorkOrderID, StartDate FROM Production.WorkOrder
+WHERE ProductID = 945
+
+-- 6.3
+DBCC FREEPROCCACHE;
+DBCC DROPCLEANBUFFERS;
+SELECT WorkOrderID FROM Production.WorkOrder
+WHERE ProductID = 945 AND StartDate = '2006-01-04'
+
+-- 7.
+DBCC FREEPROCCACHE;
+DBCC DROPCLEANBUFFERS;
+CREATE INDEX IdxStartDate ON Production.WorkOrder (StartDate)
+SELECT WorkOrderID, StartDate FROM Production.WorkOrder
+WHERE ProductID = 945 AND StartDate = '2006-01-04'
+
+-- 8.
+DBCC FREEPROCCACHE;
+DBCC DROPCLEANBUFFERS;
+CREATE INDEX IdxStartDateProductId ON Production.WorkOrder (ProductId, StartDate)
+SELECT WorkOrderID, StartDate FROM Production.WorkOrder
+WHERE ProductID = 945 AND StartDate = '2006-01-04'

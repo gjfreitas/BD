@@ -1,0 +1,89 @@
+--use p8g4;
+
+
+--CREATE SCHEMA RENT_A_CAR;
+--go
+
+/* Para apagar as tables
+DROP TABLE RENT_A_CAR.ALUGUER;
+DROP TABLE RENT_A_CAR.SIMILARIDADE;
+DROP TABLE RENT_A_CAR.PESADO;
+DROP TABLE RENT_A_CAR.LIGEIRO;
+DROP TABLE RENT_A_CAR.VEICULO;
+DROP TABLE RENT_A_CAR.TIPO_VEICULO; 
+DROP TABLE RENT_A_CAR.BALCAO;
+DROP TABLE RENT_A_CAR.CLIENTE;
+ */
+
+CREATE TABLE RENT_A_CAR.CLIENTE (
+	nif			INT	NOT NULL,
+	num_carta	INT,
+	endereco	VARCHAR(30) NOT NULL,
+	nome		VARCHAR(30) NOT NULL,
+	PRIMARY KEY(nif),
+	UNIQUE (num_carta)			--chave candidata
+);
+
+CREATE TABLE RENT_A_CAR.BALCAO (
+	numero_balcao	INT,
+	nome			VARCHAR(30) NOT NULL,
+	endereco		VARCHAR(30) NOT NULL,
+	PRIMARY KEY(numero_balcao),
+);
+
+CREATE TABLE RENT_A_CAR.TIPO_VEICULO (
+	codigo			INT,
+	ar_condicionado	BIT DEFAULT 0,
+	designacao		VARCHAR(30) NOT NULL,
+	PRIMARY KEY(codigo),
+);
+
+
+CREATE TABLE RENT_A_CAR.LIGEIRO (
+	codigo			INT,
+	num_lugares		INT NOT NULL,
+	portas			INT NOT NULL,
+	combustivel		VARCHAR(10),
+	PRIMARY KEY(codigo),
+	FOREIGN KEY(codigo) REFERENCES RENT_A_CAR.TIPO_VEICULO(codigo),
+);
+
+CREATE TABLE RENT_A_CAR.PESADO (
+	codigo			INT,
+	peso			INT NOT NULL,
+	passageiros		INT NOT NULL,
+	PRIMARY KEY(codigo),
+	FOREIGN KEY(codigo) REFERENCES RENT_A_CAR.TIPO_VEICULO(codigo),
+);
+
+
+CREATE TABLE RENT_A_CAR.VEICULO (
+	matricula		VARCHAR(8) NOT NULL,
+	marca			VARCHAR(30) NOT NULL,
+	ano				INT NOT NULL,
+	codigo_veiculo	INT NOT NULL,
+	PRIMARY KEY(matricula),
+	FOREIGN KEY (codigo_veiculo) REFERENCES RENT_A_CAR.TIPO_VEICULO(codigo)
+);
+
+CREATE TABLE RENT_A_CAR.SIMILARIDADE (
+	codigo_v1		INT,
+	codigo_v2		INT,
+	PRIMARY KEY(codigo_v1, codigo_v2),
+	FOREIGN KEY(codigo_v1) REFERENCES RENT_A_CAR.TIPO_VEICULO(codigo),
+	FOREIGN KEY(codigo_v2) REFERENCES RENT_A_CAR.TIPO_VEICULO(codigo),
+);
+
+
+CREATE TABLE RENT_A_CAR.ALUGUER (
+	numero_aluguer		INT,
+	dataA				DATE NOT NULL,
+	duracao				INT NOT NULL,
+	cliente_nif			INT NOT NULL,
+	numero_balcao		INT DEFAULT 0 NOT NULL,
+	matricula_veiculo	VARCHAR(8) NOT NULL,
+	PRIMARY KEY(numero_aluguer),
+	FOREIGN KEY(cliente_nif) REFERENCES RENT_A_CAR.CLIENTE(NIF),
+	FOREIGN KEY(numero_balcao) REFERENCES RENT_A_CAR.BALCAO(numero_balcao)  on update cascade,
+	FOREIGN KEY(matricula_veiculo) REFERENCES RENT_A_CAR.VEICULO(matricula)
+);

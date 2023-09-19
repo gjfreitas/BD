@@ -1,0 +1,84 @@
+--use p8g4;
+
+--CREATE SCHEMA CONFERENCIA;
+--go
+
+/* 
+DROP TABLE CONFERENCIA.PERTENCE;
+DROP TABLE CONFERENCIA.ESCRITO;
+DROP TABLE CONFERENCIA.ARTIGO;
+DROP TABLE CONFERENCIA.NAOESTUDANTE;
+DROP TABLE CONFERENCIA.ESTUDANTE;
+DROP TABLE CONFERENCIA.INSTITUICAO;
+DROP TABLE CONFERENCIA.PARTICIPANTE; 
+DROP TABLE CONFERENCIA.AUTOR;
+DROP TABLE CONFERENCIA.PESSOA; 
+ */
+
+CREATE TABLE CONFERENCIA.PESSOA (
+    email			VARCHAR(30) NOT NULL,
+    nome            VARCHAR(30) NOT NULL,
+    PRIMARY KEY(email),
+);
+
+CREATE TABLE CONFERENCIA.AUTOR (
+    email_autor			VARCHAR(30) NOT NULL,
+    PRIMARY KEY(email_autor),
+	FOREIGN KEY(email_autor) REFERENCES CONFERENCIA.PESSOA(email)  on update cascade,
+);
+
+
+CREATE TABLE CONFERENCIA.PARTICIPANTE (
+    email_partic			VARCHAR(30) NOT NULL,
+    morada					VARCHAR(30) NOT NULL,
+    data_insc				DATe,
+    PRIMARY KEY(email_partic),
+	FOREIGN KEY(email_partic) REFERENCES CONFERENCIA.PESSOA(email)  on update cascade,
+);
+
+CREATE TABLE CONFERENCIA.INSTITUICAO (
+	nome					VARCHAR(30) NOT NULL,
+    endereco				VARCHAR(30) NOT NULL,
+    PRIMARY KEY(nome),
+);
+
+CREATE TABLE CONFERENCIA.ESTUDANTE (
+    email_estud			VARCHAR(30) NOT NULL,
+    comprovativo        VARCHAR(30) NOT NULL,
+    localização			VARCHAR(30) NOT NULL,
+	instituicao			VARCHAR(30) NOT NULL,
+    PRIMARY KEY(email_estud),
+	FOREIGN KEY(email_estud) REFERENCES CONFERENCIA.PARTICIPANTE(email_partic)  on update cascade,
+	FOREIGN KEY(instituicao) REFERENCES CONFERENCIA.INSTITUICAO(NOME)  on update cascade,
+);
+
+
+CREATE TABLE CONFERENCIA.NAOESTUDANTE (
+    email_n_estud			VARCHAR(30) NOT NULL,
+    ref_trans_banc			VARCHAR(30) NOT NULL,
+    PRIMARY KEY(email_n_estud),
+	FOREIGN KEY(email_n_estud) REFERENCES CONFERENCIA.PARTICIPANTE(email_partic)  on update cascade,
+);
+
+CREATE TABLE CONFERENCIA.ARTIGO (
+    num					INT NOT NULL,
+    titulo				VARCHAR(30) NOT NULL,
+    PRIMARY KEY(num),
+);
+
+
+CREATE TABLE CONFERENCIA.ESCRITO (
+    num_regist			INT,
+    autor			VARCHAR(30),
+    PRIMARY KEY(num_regist, autor),
+    FOREIGN KEY(num_regist) REFERENCES CONFERENCIA.ARTIGO(num)  on update cascade,
+	FOREIGN KEY(autor) REFERENCES CONFERENCIA.AUTOR(email_autor)  on update cascade,
+);
+
+CREATE TABLE CONFERENCIA.PERTENCE (
+    pessoa_email				VARCHAR(30),
+    instituicao					VARCHAR(30),
+    PRIMARY KEY(pessoa_email, instituicao),
+    FOREIGN KEY(pessoa_email) REFERENCES CONFERENCIA.PESSOA(email)  on update cascade,
+	FOREIGN KEY(instituicao) REFERENCES CONFERENCIA.INSTITUICAO(nome)  on update cascade,
+);

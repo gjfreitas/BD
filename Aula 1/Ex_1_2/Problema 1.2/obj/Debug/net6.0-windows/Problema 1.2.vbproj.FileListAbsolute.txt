@@ -1,0 +1,17 @@
+C:\Users\gfrei\OneDrive - Universidade de Aveiro\3º Ano\2º Semestre\BD\Prática\Aula 1\Ex_1_2\Problema 1.2\bin\Debug\net6.0-windows\Problema 1.2.exe
+C:\Users\gfrei\OneDrive - Universidade de Aveiro\3º Ano\2º Semestre\BD\Prática\Aula 1\Ex_1_2\Problema 1.2\bin\Debug\net6.0-windows\Problema 1.2.deps.json
+C:\Users\gfrei\OneDrive - Universidade de Aveiro\3º Ano\2º Semestre\BD\Prática\Aula 1\Ex_1_2\Problema 1.2\bin\Debug\net6.0-windows\Problema 1.2.runtimeconfig.json
+C:\Users\gfrei\OneDrive - Universidade de Aveiro\3º Ano\2º Semestre\BD\Prática\Aula 1\Ex_1_2\Problema 1.2\bin\Debug\net6.0-windows\Problema 1.2.dll
+C:\Users\gfrei\OneDrive - Universidade de Aveiro\3º Ano\2º Semestre\BD\Prática\Aula 1\Ex_1_2\Problema 1.2\bin\Debug\net6.0-windows\Problema 1.2.pdb
+C:\Users\gfrei\OneDrive - Universidade de Aveiro\3º Ano\2º Semestre\BD\Prática\Aula 1\Ex_1_2\Problema 1.2\obj\Debug\net6.0-windows\Problema 1.2.vbproj.AssemblyReference.cache
+C:\Users\gfrei\OneDrive - Universidade de Aveiro\3º Ano\2º Semestre\BD\Prática\Aula 1\Ex_1_2\Problema 1.2\obj\Debug\net6.0-windows\Problema_1._2.Form1.resources
+C:\Users\gfrei\OneDrive - Universidade de Aveiro\3º Ano\2º Semestre\BD\Prática\Aula 1\Ex_1_2\Problema 1.2\obj\Debug\net6.0-windows\Problema 1.2.vbproj.GenerateResource.cache
+C:\Users\gfrei\OneDrive - Universidade de Aveiro\3º Ano\2º Semestre\BD\Prática\Aula 1\Ex_1_2\Problema 1.2\obj\Debug\net6.0-windows\Problema 1.2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gfrei\OneDrive - Universidade de Aveiro\3º Ano\2º Semestre\BD\Prática\Aula 1\Ex_1_2\Problema 1.2\obj\Debug\net6.0-windows\Problema 1.2.AssemblyInfoInputs.cache
+C:\Users\gfrei\OneDrive - Universidade de Aveiro\3º Ano\2º Semestre\BD\Prática\Aula 1\Ex_1_2\Problema 1.2\obj\Debug\net6.0-windows\Problema 1.2.AssemblyInfo.vb
+C:\Users\gfrei\OneDrive - Universidade de Aveiro\3º Ano\2º Semestre\BD\Prática\Aula 1\Ex_1_2\Problema 1.2\obj\Debug\net6.0-windows\Problema 1.2.vbproj.CoreCompileInputs.cache
+C:\Users\gfrei\OneDrive - Universidade de Aveiro\3º Ano\2º Semestre\BD\Prática\Aula 1\Ex_1_2\Problema 1.2\obj\Debug\net6.0-windows\Problema 1.2.dll
+C:\Users\gfrei\OneDrive - Universidade de Aveiro\3º Ano\2º Semestre\BD\Prática\Aula 1\Ex_1_2\Problema 1.2\obj\Debug\net6.0-windows\refint\Problema 1.2.dll
+C:\Users\gfrei\OneDrive - Universidade de Aveiro\3º Ano\2º Semestre\BD\Prática\Aula 1\Ex_1_2\Problema 1.2\obj\Debug\net6.0-windows\Problema 1.2.pdb
+C:\Users\gfrei\OneDrive - Universidade de Aveiro\3º Ano\2º Semestre\BD\Prática\Aula 1\Ex_1_2\Problema 1.2\obj\Debug\net6.0-windows\Problema 1.2.genruntimeconfig.cache
+C:\Users\gfrei\OneDrive - Universidade de Aveiro\3º Ano\2º Semestre\BD\Prática\Aula 1\Ex_1_2\Problema 1.2\obj\Debug\net6.0-windows\ref\Problema 1.2.dll

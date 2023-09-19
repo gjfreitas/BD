@@ -1,0 +1,83 @@
+7.2
+
+a) Está na primeira forma normal, pois os atributos são atómicos e não existem relações dentro de relações.
+Não esta na 2FN, pois exitem relações de dependência parciais.
+Não esta na 3FN, porque não esta na 2FN e porque existem dependências funcionais entre atributos que não são chave (Dependência Transitiva).
+
+Depêndencias Funcionais:
+Total: Titulo_Livro, Nome_Autor -> Editor, Tipo_Livro, NoPaginas, Ano_Publicacao
+
+Parcial: Nome_Autor -> Afiliação_Autor
+
+Transitiva -> Editor -> Endereco_Editor e Tipo_Livro -> NoPaginas, Preco
+
+b)
+1º Parte: Colocar na forma 2FN (eliminar dependencias parciais)
+-> Autor(Nome_Autor, Afiliação_Autor)
+-> Livro(Titulo_Livro, Nome_Autor, Tipo_Livro, Preco, NoPaginas,Editor, Endereco_Editor, Ano_Publicacao)
+
+2º Parte: Colocar na forma 3FN (eliminar dependencias transitivas)
+-> Editor(Editor, Endereco_Editor)
+-> TipoLivro(Tipo_Livro, NoPaginas, Preco)
+-> Livro(Titulo_Livro, Nome_Autor, Tipo_Livro, NoPaginas,Editor, Ano_Publicacao)
+
+7.3
+
+a) Chave de R: {A,B}
+
+b) Colocar na forma 2FN
+	
+	- R1(A,B,C)
+	- R2(A,D,E,I,J)
+	- R3(B,F,G,H)
+
+c) Colocar na forma 3FN
+
+	- R1(A,B,C)
+	- R2(A,D,E)
+	- R3(B,F)
+	- R4(F,G,H)
+	- R5(D,I,J)
+
+7.4
+
+a) Chave de R: {B}
+
+b) Colocar na forma 3FN
+
+	- R1(A,B,C,D,E)
+	- R2(D,E)
+
+c) Colocar na forma BCNF
+
+	- R1(A,B,D)
+	- R2(C,A)
+	- R3(D,E)
+
+7.5
+
+a) Chave de R: {A,B}
+
+b) Colocar na forma 2FN
+
+	- R1(A,B,E)
+	- R2(A,C,D)
+
+c) Colocar na forma 3FN
+
+	- R1(A,B,E)
+	- R2(A,C)
+	- R3(C,D)
+
+d) Colocar na forma BCNF.
+
+	- Na forma BCNF todos os atributos são chaves da relação, de toda a chave e nada mais. Isto já acontece na alinea anterior pelo que não é preciso fazer nada.
+
+
+
+
+
+
+
+
+

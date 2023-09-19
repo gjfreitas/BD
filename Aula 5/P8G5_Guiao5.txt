@@ -1,0 +1,72 @@
+5.1
+a)
+	π Pname, Fname, Lname, Ssn (employee⨝ Essn=Ssn works_on ⨝ Pnumber=Pno project)
+b)
+	π Fname, Minit, Lname (π Fname, Minit, Lname, Super_ssn (employee) ⨝ employee.Super_ssn=sup_ssn.Ssn (ρ sup_ssn (π Ssn (σ Fname='Carlos' ∧ Minit='D' ∧ Lname='Gomes' (employee) ))))
+c)
+	π Pname,sum_hours (γ Pname, Pnumber; sum(Hours) -> sum_hours (project ⨝ Pnumber = Pno works_on))
+d)
+ 	π Fname, Minit, Lname, Ssn (π Fname, Minit, Lname, Ssn (σ Dno=3 (employee)) ⨝ Ssn=works_on.Essn (πPno, Essn (σ Hours>20 (works_on)) ⨝ Pno=Pnumber π Pnumber (σ Pname='Aveiro Digital' (project))))
+e)
+	π Fname, Minit, Lname (σ Pno=null ( (employee) ⟕ Ssn=Essn (works_on)))
+f)
+	γ Dname; avg(Salary) -> avg_salary ((department) ⨝ Dno=Dnumber ((σ Sex='F' employee)))
+g)
+	σ num_dependents > 2 (γ Ssn,Fname, Minit, Lname; count(Essn) -> num_dependents ((employee) ⨝ Ssn=Essn (dependent)))
+
+h)
+	π Ssn, Fname, Minit, Lname (σ Essn=null (dependent ⟖ Essn=Ssn ((employee) ⨝ Ssn=Mgr_ssn (department))))
+
+i)
+	X = (dept_location) ⨝ (dept_location.Dnumber = department.Dnumber ∧ dept_location.Dlocation ≠ 'Aveiro')
+	Y = ((project) ⨝ (Pnumber=Pno ∧ Plocation='Aveiro') (works_on) ⨝ Essn=Ssn (employee))
+	π Fname, Minit, Lname, Address ((X) ⨝ Dno=department.Dnumber (Y))
+
+
+5.2
+
+a)
+	π nif, nome (σ encomenda.numero=null (fornecedor ⟕ nif=fornecedor encomenda))
+b)
+	γ codProd;avg(unidades)->unidades item
+c)
+	n_produtos=(γ numEnc;count(codProd) -> n_p item)
+	γ avg(n_p) -> avg_enc (n_produtos)
+d)
+	γ fornecedor.nome, produto.nome; sum(item.unidades)->quantidade (π fornecedor.nome, produto.nome,item.unidades (produto ⨝(codigo=codProd) (item ⨝(numEnc=numero) (fornecedor ⨝(nif=fornecedor) encomenda))))
+
+5.3
+a)
+	π paciente.numUtente,nome (σ numPresc=null ( (prescricao) ⟖ prescricao.numUtente=paciente.numUtente (paciente) ))
+
+b)
+	γ especialidade; count(especialidade) -> num_prescricoes ((medico) ⨝ numSNS=numMedico (prescricao))
+
+c)
+	σ farmacia ≠ null (γ farmacia; count(farmacia) -> num_presc (prescricao))
+
+d)
+ 	π nomeFarmaco (σ numRegFarm=906 presc_farmaco⨝(π numPresc σ farmacia=null prescricao))
+
+e)
+	σ prescricao.farmacia ≠ null (γ prescricao.farmacia, farmaceutica.nome; count(farmaceutica.nome) -> num_farm ((prescricao) ⨝ prescricao.numPresc=presc_farmaco.numPresc (presc_farmaco) ⨝ numRegFarm = numReg (farmaceutica)))
+
+f)
+	π numUtente,nome ((paciente)⨝(σ num_med > 1 γ numUtente;count(numUtente) -> num_med  π numUtente,numMedico prescricao))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

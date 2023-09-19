@@ -1,0 +1,70 @@
+--use p8g4;
+
+--CREATE SCHEMA ENCOMENDAS;
+--go
+
+/* Para apagar as tables
+DROP TABLE ENCOMENDAS.TIPO_FORNECEDOR;
+DROP TABLE ENCOMENDAS.TEM;
+DROP TABLE ENCOMENDAS.CONSTITUI;
+DROP TABLE ENCOMENDAS.ENCOMENDA;
+DROP TABLE ENCOMENDAS.FORNECEDOR;
+DROP TABLE ENCOMENDAS.PRODUTO;
+*/
+
+CREATE TABLE ENCOMENDAS.PRODUTO (
+	codigo				INT	NOT NULL,
+	preco				MONEY,
+	iva					MONEY,
+	unidades			INT	NOT NULL,
+	nome				VARCHAR(30) NOT NULL,
+	PRIMARY KEY(codigo),
+	CHECK(unidades>=0)
+);
+
+
+CREATE TABLE ENCOMENDAS.FORNECEDOR (
+	nif			INT NOT NULL,
+	nome		VARCHAR(30),
+	fax			CHAR(9),
+	endereco	VARCHAR(30),
+	pagamento	MONEY,
+	PRIMARY KEY(nif),
+	UNIQUE(nome),
+);
+
+
+CREATE TABLE ENCOMENDAS.ENCOMENDA (
+	n_encomenda				INT	NOT NULL,
+	data_realizacao			DATE NOT NULL,
+	f_nif					INT	NOT NULL,
+	PRIMARY KEY(n_encomenda),
+	FOREIGN KEY(f_nif) REFERENCES ENCOMENDAS.FORNECEDOR(nif),
+);
+
+
+CREATE TABLE ENCOMENDAS.CONSTITUI (
+	cod_produto		INT,
+	n_encomenda		INT NOT NULL,
+	n_itens			INT,
+	PRIMARY KEY(cod_produto,n_encomenda),
+	FOREIGN KEY(cod_produto) REFERENCES ENCOMENDAS.PRODUTO(codigo)  on update cascade,
+	FOREIGN KEY(n_encomenda) REFERENCES ENCOMENDAS.ENCOMENDA(n_encomenda)  on update cascade,
+);
+
+
+
+CREATE TABLE ENCOMENDAS.TEM (
+	cod_tipforn		INT,
+	nif_forn		INT NOT NULL,
+	PRIMARY KEY(nif_forn,cod_tipforn),
+	FOREIGN KEY(nif_forn) REFERENCES ENCOMENDAS.FORNECEDOR(nif),
+	UNIQUE(cod_tipforn),
+);
+
+CREATE TABLE ENCOMENDAS.TIPO_FORNECEDOR (
+	codigo			INT NOT NULL,
+	designacao		VARCHAR(30),
+	PRIMARY KEY(codigo),
+	FOREIGN KEY(codigo) REFERENCES ENCOMENDAS.TEM(cod_tipforn)  on update cascade,
+);
